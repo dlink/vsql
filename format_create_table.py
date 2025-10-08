@@ -33,12 +33,13 @@ def format_create(sql: str) -> str:
     lines2 = []
     for parts in lines:
         if parts[0] == '' and parts[1] == '':
+            fn = parts[2]
             # add blank line before keys
-            if parts[2] == 'key' and not key_found:
+            if (fn == 'primary' or fn == 'key') and not key_found:
                 lines2.append('')
                 key_found = 1
             # add blank line before constraints
-            if parts[2] == 'constraint' and not constraint_found:
+            if fn == 'constraint' and not constraint_found:
                 lines2.append('')
                 constraint_found = 1
             parts[2] = parts[2].ljust(max_fieldname_len)
