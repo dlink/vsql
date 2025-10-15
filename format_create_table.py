@@ -6,6 +6,7 @@ import sys
 def format_create(sql: str) -> str:
     sql = sql.lower() \
         .replace("`", "") \
+        .replace('"', '') \
         .replace("\t", " ") \
         .replace("\\n", "\n")
 
@@ -18,7 +19,7 @@ def format_create(sql: str) -> str:
             continue
         parts = line.split(' ')
         # remove tablename column
-        if parts[1] == 'create' and parts[2] == 'table':
+        if len(parts)>1 and parts[1] == 'create' and parts[2] == 'table':
             parts = parts[1:]
         # handle leading spaces
         if parts[0] == '' and parts[1] == '':
