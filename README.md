@@ -1,1 +1,1 @@
-General Purpoase SQL Script for MySQL
+General Purpose SQL Script for MySQL
